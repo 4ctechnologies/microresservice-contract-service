@@ -36,6 +36,20 @@ public class ContractService {
         return new ResponseEntity<>(contract, HttpStatus.OK);
     }
 
+    @RequestMapping(method = RequestMethod.GET, value = "/cid/{id}")
+    public ResponseEntity<Iterable<Contract>> getByConsultantId(@PathVariable String consultantId) {
+        LOG.info("/contracts getByConsultantId method called");
+        Iterable<Contract> contracts = repo.findByConsultantId(consultantId);
+        return new ResponseEntity<>(contracts, HttpStatus.OK);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/uid/{id}")
+    public ResponseEntity<Iterable<Contract>> getByUnitId(@PathVariable String unitId) {
+        LOG.info("/contracts getByUnitId method called");
+        Iterable<Contract> contracts = repo.findByConsultantId(unitId);
+        return new ResponseEntity<>(contracts, HttpStatus.OK);
+    }
+
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<Contract> create(@RequestBody Contract contract) {
         LOG.info("/contracts create method called");
