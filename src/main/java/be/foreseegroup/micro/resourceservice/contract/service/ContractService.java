@@ -45,7 +45,7 @@ public class ContractService {
     @RequestMapping(method = RequestMethod.GET, value = "/contractsbyuid/{unitId}")
     public ResponseEntity<Iterable<Contract>> getByUnitId(@PathVariable String unitId) {
         LOG.info("/contracts getByUnitId method called");
-        Iterable<Contract> contracts = repo.findByConsultantId(unitId);
+        Iterable<Contract> contracts = repo.findByUnitId(unitId);
         return new ResponseEntity<>(contracts, HttpStatus.OK);
     }
 
